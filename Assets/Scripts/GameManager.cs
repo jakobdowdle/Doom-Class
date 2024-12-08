@@ -9,12 +9,15 @@ public class GameManager : MonoBehaviour
     private int health;
     private int armor;
     private int ammo;
+    
+    public static GameManager Instance;
     // Start is called before the first frame update
     void Start()
     {
         health=100;
         armor=0;
         ammo= 0; //Do you start with ammo?
+        Instance=this;
     }
 
     void updateUI(){
@@ -45,6 +48,10 @@ public class GameManager : MonoBehaviour
 
     public void gainHealth(int heal){
         health+=heal;
+        if(health>100)
+        {
+            health=100;
+        }
         updateUI();
     }
 

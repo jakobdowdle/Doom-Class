@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoPickup : MonoBehaviour
+public class HealthKit : MonoBehaviour
 {
-    [SerializeField] private int ammoAmount;
-    
+    [SerializeField] private int healthAmount;
+
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag=="player")
+        if (collision.gameObject.tag == "player")
         {
             GetComponent<Collider>().enabled = false;
-            GameManager.Instance.gainAmmo(ammoAmount);
+            GameManager.Instance.gainHealth(healthAmount);
             Destroy(gameObject);
         }
     }

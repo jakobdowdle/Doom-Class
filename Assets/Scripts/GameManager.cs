@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     }
 
     void updateUI(){
+        Debug.Log(health+" "+armor+" "+ammo);
         //UI.getCompontent<UIBehaviour>().SetUI(health, armor, ammo);
     }
 
@@ -41,9 +42,19 @@ public class GameManager : MonoBehaviour
         updateUI();
     }
 
-    public void gainArmor(int armorPoints){
-        armor+=armorPoints;
+    public void setArmor(int armorPoints){
+        armor=armorPoints;
         updateUI();        
+    }
+
+    public void gainArmor(int armorPoints)
+    {
+        armor += armorPoints;
+        if (armor > 200)
+        {
+            armor = 200;
+        }
+        updateUI();
     }
 
     public void gainHealth(int heal){
@@ -55,6 +66,12 @@ public class GameManager : MonoBehaviour
         updateUI();
     }
 
+    public void setHealth(int heal)
+    {
+        health = 100;
+        updateUI();
+    }
+
     public void gainAmmo(int ammoNum){
         ammo+=ammoNum;
         updateUI();
@@ -62,5 +79,10 @@ public class GameManager : MonoBehaviour
 
     public void endGame(){
         //play death animation
+    }
+
+    public int getArmor()
+    {
+        return armor;
     }
 }

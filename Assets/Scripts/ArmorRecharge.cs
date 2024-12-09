@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArmorPickup : MonoBehaviour
+public class ArmorRecharge : MonoBehaviour
 {
     [SerializeField] private int armorAmount;
-    
+
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "player")
         {
-            if (GameManager.Instance.getArmor() <= 200)
+            if (GameManager.Instance.getArmor() < armorAmount)
             {
                 GetComponent<Collider>().enabled = false;
-                GameManager.Instance.gainArmor(armorAmount);
+                GameManager.Instance.setArmor(armorAmount);
                 Destroy(gameObject);
             }
         }

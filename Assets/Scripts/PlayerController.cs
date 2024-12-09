@@ -48,4 +48,9 @@ public class PlayerController : MonoBehaviour {
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
     }
+
+    public void setLocation(Vector3 location)
+    {
+        transform.position = location;
+    }
 }

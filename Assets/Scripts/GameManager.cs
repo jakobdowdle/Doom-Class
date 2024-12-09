@@ -5,23 +5,32 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject UI;
+    [SerializeField] private GameObject spawn;
 
     private int health;
     private int armor;
-    private int ammo;
+    private int[] ammo;
     
     public static GameManager Instance;
     // Start is called before the first frame update
+
     void Start()
     {
+        StartGame();
+    }
+
+    void StartGame()
+    {
+        PlayerController.Instance.setLocation(spawn.transform.position);
+        WeaponManager.Instance.reset();
         health=100;
         armor=0;
-        ammo= 0; //Do you start with ammo?
+        ammo= new int[] {50, 0}; //Do you start with ammo?
         Instance=this;
     }
 
     void updateUI(){
-        Debug.Log(health+" "+armor+" "+ammo);
+        Debug.Log(health+" "+armor+" [" + ammo[0] + "," + ammo[1]+"]");
         //UI.getCompontent<UIBehaviour>().SetUI(health, armor, ammo);
     }
 
@@ -59,30 +68,42 @@ public class GameManager : MonoBehaviour
 
     public void gainHealth(int heal){
         health+=heal;
-        if(health>100)
-        {
-            health=100;
-        }
         updateUI();
     }
 
-    public void setHealth(int heal)
+    public void setHealth()
     {
         health = 100;
         updateUI();
     }
 
-    public void gainAmmo(int ammoNum){
-        ammo+=ammoNum;
+    public void gainAmmo(int weapon, int ammoNum){
+        ammo[weapon]+=ammoNum;
         updateUI();
+    }
+
+    public void useAmmo(int weapon)
+    {
+        ammo[weapon]--;
     }
 
     public void endGame(){
         //play death animation
+        StartGame();
     }
 
     public int getArmor()
     {
         return armor;
+    }
+
+    public int getHealth()
+    {
+        return health;
+    }
+
+    public int getAmmo(int weapon)
+    {
+        return ammo[weapon];
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AmmoPickup : MonoBehaviour
 {
+    [SerializeField] private int weaponType;
     [SerializeField] private int ammoAmount;
     
     void OnTriggerEnter(Collider collision)
@@ -11,7 +12,7 @@ public class AmmoPickup : MonoBehaviour
         if (collision.gameObject.tag=="player")
         {
             GetComponent<Collider>().enabled = false;
-            GameManager.Instance.gainAmmo(ammoAmount);
+            GameManager.Instance.gainAmmo(weaponType, ammoAmount);
             Destroy(gameObject);
         }
     }

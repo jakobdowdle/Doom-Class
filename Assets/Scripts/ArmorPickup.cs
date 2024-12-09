@@ -10,7 +10,7 @@ public class ArmorPickup : MonoBehaviour
     {
         if (collision.gameObject.tag == "player")
         {
-            if (GameManager.Instance.getArmor() <= 200)
+            if (GameManager.Instance.getArmor() < 200)
             {
                 GetComponent<Collider>().enabled = false;
                 GameManager.Instance.gainArmor(armorAmount);

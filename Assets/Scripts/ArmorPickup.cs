@@ -8,11 +8,14 @@ public class ArmorPickup : MonoBehaviour
     
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag=="player")
+        if (collision.gameObject.tag == "player")
         {
-            GetComponent<Collider>().enabled = false;
-            GameManager.Instance.gainHealth(armorAmount);
-            Destroy(gameObject);
+            if (GameManager.Instance.getArmor() <= 200)
+            {
+                GetComponent<Collider>().enabled = false;
+                GameManager.Instance.gainArmor(armorAmount);
+                Destroy(gameObject);
+            }
         }
     }
 }

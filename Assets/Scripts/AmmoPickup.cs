@@ -11,7 +11,7 @@ public class AmmoPickup : MonoBehaviour
         if (collision.gameObject.tag=="player")
         {
             GetComponent<Collider>().enabled = false;
-            GameManager.Instance.gainHealth(ammoAmount);
+            GameManager.Instance.gainAmmo(ammoAmount);
             Destroy(gameObject);
         }
     }

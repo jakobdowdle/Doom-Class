@@ -7,8 +7,10 @@ public class PlayerController : MonoBehaviour {
     private float xRotation = 0f;
     [SerializeField] private Transform cameraTransform;
 
+    public static PlayerController Instance;
     void Start() {
         Cursor.lockState = CursorLockMode.Locked;
+        Instance = this;
     }
 
     void Update() {

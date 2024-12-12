@@ -1,13 +1,16 @@
 using UnityEngine.AI;
+using System.Collections;
 using UnityEngine;
 
-public class AIChaseBehaviour : MonoBehaviour
+public class AIBehaviour : MonoBehaviour
 {
-    public enum AIState { Patrol, Chase }
+    public enum AIState { Patrol, Chase, Attack }
     [SerializeField] private GameObject _player;
     [SerializeField] private AIState _state;
     [SerializeField] private float _outOfSightChaseTime;
+    [SerializeField] private float _timeBetweenAttacks = 3f;
     private float _chaseTimer;
+    private float _attackTimer;
     private NavMeshAgent _agent;
 
     void Start()
@@ -15,15 +18,23 @@ public class AIChaseBehaviour : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _state = AIState.Patrol;
         _chaseTimer = _outOfSightChaseTime;
+        _attackTimer = _timeBetweenAttacks;
     }
     void Update()
     {
         _chaseTimer += Time.deltaTime;
 
-        if(CanSeePlayer()) _chaseTimer = 0;
 
-        if (_chaseTimer < _outOfSightChaseTime) Chase(); 
+        if (CanSeePlayer()) {
+            _chaseTimer = 0;
+            _attackTimer -= Time.deltaTime;
+        }
+
+        if (_chaseTimer < _outOfSightChaseTime) Chase();
         else _state = AIState.Patrol;
+
+        if ((_attackTimer <= 0)  && CanSeePlayer()) Attack();
+        else _state= AIState.Chase;
 
         if (_agent.remainingDistance > _agent.stoppingDistance) return;
         if (_state == AIState.Patrol) Patrol();
@@ -63,5 +74,17 @@ public class AIChaseBehaviour : MonoBehaviour
     {
         _agent.destination = _player.transform.position;
         _state = AIState.Chase;
+    }
+
+    private void Attack() {
+        _state = AIState.Attack;
+        Debug.Log("ENEMY ATTACK!");
+        StartCoroutine(HoldStill());
+        _attackTimer = _timeBetweenAttacks;
+    }
+
+    IEnumerator HoldStill() {
+        _agent.destination = _agent.transform.position;
+        yield return new WaitForSeconds(5f);
     }
 }

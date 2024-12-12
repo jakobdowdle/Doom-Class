@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 
     private float xRotation = 0f;
     [SerializeField] private Transform cameraTransform;
+    [HideInInspector] public Vector3 moveDirection;
 
     public static PlayerController Instance;
     void Start() {
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void HandleMovement() {
-        Vector3 moveDirection = Vector3.zero;
+        moveDirection = Vector3.zero;
 
         if (Input.GetKey(KeyCode.W)) {
             moveDirection += transform.forward;

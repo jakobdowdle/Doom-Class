@@ -78,7 +78,7 @@ public class AIBehaviour : MonoBehaviour
 
     private void Attack() {
         _state = AIState.Attack;
-        Debug.Log("ENEMY ATTACK!");
+        //Debug.Log("ENEMY ATTACK!");
         StartCoroutine(HoldStill());
         _attackTimer = _timeBetweenAttacks;
     }

@@ -89,7 +89,10 @@ public class WeaponManager : MonoBehaviour
 
     void shoot()
     {
-      
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        Physics.Raycast(ray, out hit);
+        GetComponentInChildren<WeaponBehaviour>().CheckCollision(hit);
     }
 
     public void addWeapon(GameObject Weapon) 

@@ -99,6 +99,10 @@ public class WeaponManager : MonoBehaviour
             Instantiate(ShotgunPrefab, transform);
         }
     }
+    public int getWeapon()
+    {
+        return selectedWeapon;
+    }
     void WeaponSelect()
     {
         int i = 0;

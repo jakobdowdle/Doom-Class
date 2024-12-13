@@ -9,7 +9,7 @@ public class AmmoPickup : MonoBehaviour
     
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag=="player")
+        if (collision.gameObject.tag=="Player")
         {
             GetComponent<Collider>().enabled = false;
             GameManager.Instance.gainAmmo(weaponType, ammoAmount);

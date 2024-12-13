@@ -8,7 +8,7 @@ public class ArmorRecharge : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "player")
+        if (collision.gameObject.tag == "Player")
         {
             if (GameManager.Instance.getArmor() < armorAmount)
             {

@@ -16,7 +16,7 @@ public class UIScript : MonoBehaviour
     }
 
     void updateHealth(string h){
-        Debug.Log(h.Length);
+        //Debug.Log(h.Length);
         if(h.Length>2){
         healthUI.GetComponent<TextMeshProUGUI>().text ="<sprite name=\""+h[0]+"\"><sprite name=\""+h[1]+"\"><sprite name=\""+h[2]+"\"><sprite name=\"%\">";
         } else if (h.Length==2){
@@ -30,7 +30,7 @@ public class UIScript : MonoBehaviour
 
     void updateArmor(string a)
     {
-        Debug.Log(a.Length);
+        //Debug.Log(a.Length);
         if (a.Length > 2)
         {
             armorUI.GetComponent<TextMeshProUGUI>().text = "<sprite name=\"" + a[0] + "\"><sprite name=\"" + a[1] + "\"><sprite name=\"" + a[2] + "\"><sprite name=\"%\">";
@@ -51,7 +51,7 @@ public class UIScript : MonoBehaviour
 
     void updateAmmo(string amo)
     {
-        Debug.Log(amo.Length);
+        //Debug.Log(amo.Length);
         if (amo.Length > 2)
         {
             ammoUI.GetComponent<TextMeshProUGUI>().text = "<sprite name=\"" + amo[0] + "\"><sprite name=\"" + amo[1] + "\">";

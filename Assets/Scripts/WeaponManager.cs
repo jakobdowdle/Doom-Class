@@ -18,11 +18,6 @@ public class WeaponManager : MonoBehaviour
         //Debug.Log("startgun");
     }
 
-
-    public void Start() 
-    { 
-        Instance = this;
-    }
     public void reset()
     {
         selectedWeapon = 0;
@@ -121,5 +116,6 @@ public class WeaponManager : MonoBehaviour
             weapon.gameObject.SetActive(false);
             i++;
         }
+        GameManager.Instance.setWeapon(selectedWeapon);
     }
 }

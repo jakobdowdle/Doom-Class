@@ -10,11 +10,14 @@ public class WeaponManager : MonoBehaviour
 
     public static WeaponManager Instance;
     // Start is called before the first frame update
+    void Start(){
+        Instance = this;
+    }
+
     public void reset()
     {
         shotgun = false;
         weapon = 0;
-        Instance = this;
     }
 
     // Update is called once per frame

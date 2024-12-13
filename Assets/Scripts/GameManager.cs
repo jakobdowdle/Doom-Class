@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartGame();
+        Debug.Log("go");
     }
 
     void StartGame()

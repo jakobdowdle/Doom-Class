@@ -12,6 +12,12 @@ public class WeaponManager : MonoBehaviour
     
 
     public static WeaponManager Instance;
+    // Start is called before the first frame update
+    void Awake(){
+        Instance = this;
+        //Debug.Log("startgun");
+    }
+
 
     public void Start() 
     { 

@@ -16,9 +16,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        StartGame();
-        Debug.Log("go");
         Instance=this;
+        StartGame();
+        //Debug.Log("start");
     }
 
     void StartGame()
@@ -28,12 +28,12 @@ public class GameManager : MonoBehaviour
         health=100;
         armor=0;
         ammo= new int[] {50, 0}; //Do you start with ammo?
-        
+        updateUI();
     }
 
     void updateUI(){
         Debug.Log(health+" "+armor+" [" + ammo[0] + "," + ammo[1]+"]");
-        //UI.getCompontent<UIBehaviour>().SetUI(health, armor, ammo);
+        UI.GetComponent<UIScript>().setUI(health, armor, ammo);
     }
 
     public void takeDamage(int dmg){
@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour
     public void useAmmo(int weapon)
     {
         ammo[weapon]--;
+        updateUI();
     }
 
     public void endGame(){

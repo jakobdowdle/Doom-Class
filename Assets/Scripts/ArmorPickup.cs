@@ -8,6 +8,7 @@ public class ArmorPickup : MonoBehaviour
     
     void OnTriggerEnter(Collider collision)
     {
+        //Debug.Log("pickup");
         if (collision.gameObject.tag == "player")
         {
             if (GameManager.Instance.getArmor() < 200)

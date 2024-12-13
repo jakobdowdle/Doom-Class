@@ -16,9 +16,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        StartGame();
         Instance=this;
-       // Debug.Log("start");
+        StartGame();
+        //Debug.Log("start");
     }
 
     void StartGame()
@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour
     public void useAmmo(int weapon)
     {
         ammo[weapon]--;
+        updateUI();
     }
 
     public void endGame(){

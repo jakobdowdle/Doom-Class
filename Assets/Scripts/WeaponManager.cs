@@ -10,8 +10,9 @@ public class WeaponManager : MonoBehaviour
 
     public static WeaponManager Instance;
     // Start is called before the first frame update
-    void Start(){
+    void Awake(){
         Instance = this;
+        //Debug.Log("startgun");
     }
 
     public void reset()
@@ -54,5 +55,10 @@ public class WeaponManager : MonoBehaviour
     public void addShotgun()
     {
         shotgun = true;
+    }
+
+    public int getWeapon()
+    {
+        return weapon;
     }
 }

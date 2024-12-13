@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     {
         StartGame();
         Debug.Log("go");
+        Instance=this;
     }
 
     void StartGame()
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
         health=100;
         armor=0;
         ammo= new int[] {50, 0}; //Do you start with ammo?
-        Instance=this;
+        
     }
 
     void updateUI(){

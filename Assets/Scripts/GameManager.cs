@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     }
 
     void updateUI(){
-        Debug.Log(health+" "+armor+" [" + ammo[0] + "," + ammo[1]+"]");
+        //Debug.Log(health+" "+armor+" [" + ammo[0] + "," + ammo[1]+"]");
         UI.GetComponent<UIScript>().setUI(health, armor, ammo);
     }
 
@@ -108,5 +108,11 @@ public class GameManager : MonoBehaviour
     public int getAmmo(int weapon)
     {
         return ammo[weapon];
+    }
+
+    public void setWeapon(int weapon)
+    {
+        UI.GetComponent<UIScript>().updateWeapon(weapon);
+        updateUI();
     }
 }

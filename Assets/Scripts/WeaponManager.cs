@@ -113,5 +113,6 @@ public class WeaponManager : MonoBehaviour
             weapon.gameObject.SetActive(false);
             i++;
         }
+        GameManager.Instance.setWeapon(selectedWeapon);
     }
 }

@@ -8,6 +8,12 @@ public class UIScript : MonoBehaviour
     [SerializeField] private GameObject ammoUI;
     [SerializeField] private GameObject healthUI;
     [SerializeField] private GameObject armorUI;
+    [SerializeField] private GameObject[] weaponUI;
+
+    private void Start()
+    {
+        switchToPistol();
+    }
 
     public void setUI(int health, int armor, int[] ammo){
         updateHealth(health.ToString());
@@ -68,5 +74,39 @@ public class UIScript : MonoBehaviour
         {
             ammoUI.GetComponent<TextMeshProUGUI>().text = "<sprite name=\"0\">";
         }
+    }
+
+    public void updateWeapon(int weapon)
+    {
+        switch (weapon)
+        {
+            case 0:
+                switchToPistol();
+                break;
+            case 1:
+                switchToShotgun();
+                break;
+            default:
+                switchToPistol();
+                break;
+        }
+    }
+
+    public void switchToPistol()
+    {
+        foreach (GameObject w in weaponUI)
+        {
+            w.SetActive(false);
+        }
+        weaponUI[0].SetActive(true);
+    }
+
+    public void switchToShotgun()
+    {
+        foreach (GameObject w in weaponUI)
+        {
+            w.SetActive(false);
+        }
+        weaponUI[1].SetActive(true);
     }
 }

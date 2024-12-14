@@ -8,8 +8,16 @@ public class DoorBehaviour : MonoBehaviour
     [SerializeField] private float time = 1;
     [SerializeField] private float moveDist = 2;
 
+    [SerializeField] private AudioSource OpenDoorSound;
+
     private Vector3 startLocation;
     private bool _playerInRange=false;
+
+    private void Awake() {
+        if (OpenDoorSound == null) {
+            Debug.LogError("No AudioSource found.");
+        }
+    }
 
     void Update()
     {
@@ -35,6 +43,9 @@ public class DoorBehaviour : MonoBehaviour
 
     public void openDoor()
     {
+        if (OpenDoorSound != null) {
+            OpenDoorSound.Play();
+        }
         startLocation = transform.position;
         StartCoroutine(RepeatingLerp());
     }

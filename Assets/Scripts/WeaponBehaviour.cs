@@ -9,9 +9,33 @@ public class WeaponBehaviour : MonoBehaviour
     
     [SerializeField] private int ShotgunDamageMin, ShotgunDamageMax;
     [SerializeField] private int PistolDamage;
+
+    [SerializeField] private AudioSource PistolShot;
+    [SerializeField] private AudioSource ShotgunShot;
+
+    private void Awake() {
+        if (PistolShot == null) {
+            PistolShot = GetComponentInChildren<AudioSource>();
+            if (PistolShot == null) {
+                Debug.LogError("No AudioSource found.");
+            }
+        }
+        if (ShotgunShot == null) {
+            ShotgunShot = GetComponentInChildren<AudioSource>();
+            if (ShotgunShot == null) {
+                Debug.LogError("No AudioSource found.");
+            }
+        }
+    }
+
     public void CheckCollision(RaycastHit hit)
     { 
-        //GetComponent<AudioSource>().Play();
+        if(WeaponManager.Instance.getWeapon() == 0 && PistolShot != null) {
+            PistolShot.Play();
+        }
+        if (WeaponManager.Instance.getWeapon() == 1 && ShotgunShot != null) {
+            ShotgunShot.Play();
+        }
         if (hit.transform.CompareTag("Enemy") || hit.transform.CompareTag("Player"))
         {
             Entity = hit.collider.gameObject;

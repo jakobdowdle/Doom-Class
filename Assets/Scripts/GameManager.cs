@@ -7,12 +7,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject UI;
     [SerializeField] private GameObject spawn;
 
+    [SerializeField] private AudioSource PickUpItem;
+    [SerializeField] private AudioSource TakeDamage;
+
     private int health;
     private int armor;
     private int[] ammo;
     
     public static GameManager Instance;
     // Start is called before the first frame update
+    private void Awake() {
+        if (PickUpItem == null) {
+            Debug.LogError("No AudioSource found.");
+        }
+        if (TakeDamage == null) {
+            Debug.LogError("No AudioSource found.");
+        }
+    }
 
     void Start()
     {
@@ -37,6 +48,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void takeDamage(int dmg){
+        if (TakeDamage != null) {
+            TakeDamage.Play();
+        }
         if (armor>0){
             armor-= 5;
             health-= dmg/3;
@@ -60,6 +74,9 @@ public class GameManager : MonoBehaviour
 
     public void gainArmor(int armorPoints)
     {
+        if (PickUpItem != null) {
+            PickUpItem.Play();
+        }
         armor += armorPoints;
         if (armor > 200)
         {
@@ -69,7 +86,10 @@ public class GameManager : MonoBehaviour
     }
 
     public void gainHealth(int heal){
-        health+=heal;
+        if (PickUpItem != null) {
+            PickUpItem.Play();
+        }
+        health +=heal;
         updateUI();
     }
 
@@ -80,6 +100,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void gainAmmo(int weapon, int ammoNum){
+        if (PickUpItem != null) {
+            PickUpItem.Play();
+        }
         ammo[weapon]+=ammoNum;
         updateUI();
     }

@@ -160,7 +160,9 @@ MonoBehaviour:
   _player: {fileID: 0}
   _state: 0
   _outOfSightChaseTime: 3
-  _timeBetweenAttacks: 3
+  _timeBetweenAttacks: 2
+  _damage: 5
+  EnemyShoot: {fileID: 0}
 --- !u!114 &8157898793737942673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +177,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   EnemyPain: {fileID: 5265197590247844020}
-  EnemyShoot: {fileID: 1928647336607451661}
 --- !u!195 &1601142065504064474
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -269,12 +270,6 @@ PrefabInstance:
 --- !u!4 &1205707360442030296 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4726587849220421778, guid: a8c66944f4870a94db238863b6fd7423,
-    type: 3}
-  m_PrefabInstance: {fileID: 5846726679028654154}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1928647336607451661 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5467458351764924999, guid: a8c66944f4870a94db238863b6fd7423,
     type: 3}
   m_PrefabInstance: {fileID: 5846726679028654154}
   m_PrefabAsset: {fileID: 0}

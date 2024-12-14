@@ -9,10 +9,20 @@ public class AIBehaviour : MonoBehaviour
     [SerializeField] private AIState _state;
     [SerializeField] private float _outOfSightChaseTime;
     [SerializeField] private float _timeBetweenAttacks = 3f;
+    [SerializeField] private int _damage = 5;
+    [SerializeField] private AudioSource EnemyShoot;
     private float _chaseTimer;
     private float _attackTimer;
     private NavMeshAgent _agent;
 
+    private void Awake() {
+        if (EnemyShoot == null) {
+            EnemyShoot = GetComponentInChildren<AudioSource>();
+            if (EnemyShoot == null) {
+                Debug.LogError("No AudioSource found.");
+            }
+        }
+    }
     void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -78,10 +88,25 @@ public class AIBehaviour : MonoBehaviour
 
     private void Attack() {
         _state = AIState.Attack;
-        //Debug.Log("ENEMY ATTACK!");
+        if (EnemyShoot != null) {
+            EnemyShoot.Play();
+        }
+        ShootPlayer();
         StartCoroutine(HoldStill());
         _attackTimer = _timeBetweenAttacks;
     }
+
+    private void ShootPlayer() {
+        Vector3 direction = (_player.transform.position - transform.position).normalized;
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, direction, out hit)) {
+            if (hit.collider.gameObject == _player) {
+                GameManager.Instance.takeDamage(_damage);
+            }
+        }
+    }
+
 
     IEnumerator HoldStill() {
         _agent.destination = _agent.transform.position;

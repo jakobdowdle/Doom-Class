@@ -5,13 +5,20 @@ using UnityEngine;
 public class NukageBehaviour : MonoBehaviour
 {
     [SerializeField] private int nukageDamage = 5;
+    [SerializeField] private float timer = 0f;
+    [SerializeField] private float damageRate = 2f;
     private void OnTriggerStay(Collider other)
     {
-        GameManager.Instance.takeDamage(nukageDamage);
-        StartCoroutine(Cooldown());
+        if (timer >= damageRate)
+        {
+            GameManager.Instance.takeDamage(nukageDamage);
+            timer = 0f;
+        }
+        else
+            timer += Time.deltaTime;
+            
+        
+
     }
-    IEnumerator Cooldown()
-    {
-        yield return new WaitForSeconds(5f);
-    }
+  
 }

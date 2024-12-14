@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 2901792657013546030}
   - component: {fileID: 8157898793737942673}
   - component: {fileID: 1601142065504064474}
+  - component: {fileID: 3165979365270923366}
   m_Layer: 6
   m_Name: Imp
   m_TagString: Enemy
@@ -199,6 +200,18 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3165979365270923366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7756635873528905677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c92976af6867524ba027d14076abbd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5846726679028654154
 PrefabInstance:
   m_ObjectHideFlags: 0

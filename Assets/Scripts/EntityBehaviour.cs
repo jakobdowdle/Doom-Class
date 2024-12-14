@@ -9,7 +9,7 @@ public class EntityBehaviour : MonoBehaviour {
 
     private void Awake() {
         if (EnemyPain == null) {
-            EnemyPain = GetComponentInChildren<AudioSource>();
+            //EnemyPain = GetComponentInChildren<AudioSource>();
             if (EnemyPain == null) {
                 Debug.LogError("No AudioSource found.");
             }
@@ -32,7 +32,7 @@ public class EntityBehaviour : MonoBehaviour {
 
         if (health < 1) {
             health = 0;
-            Die();
+            //Die();
         }
     }
 

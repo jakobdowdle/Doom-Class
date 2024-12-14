@@ -25,6 +25,7 @@ public class AIBehaviour : MonoBehaviour
     }
     void Start()
     {
+        _player = GameObject.FindGameObjectWithTag("Player");
         _agent = GetComponent<NavMeshAgent>();
         _state = AIState.Patrol;
         _chaseTimer = _outOfSightChaseTime;

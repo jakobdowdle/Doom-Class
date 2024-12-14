@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 1601142065504064474}
   m_Layer: 6
   m_Name: Imp
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fe712c3a7a9dd428ae8026e559929c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  _player: {fileID: 1974501391083726439, guid: 16abbe5179b6b4948bec9b102311e152, type: 3}
   _state: 0
   _outOfSightChaseTime: 3
   _timeBetweenAttacks: 2

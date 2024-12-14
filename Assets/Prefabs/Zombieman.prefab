@@ -73,10 +73,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fe712c3a7a9dd428ae8026e559929c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  _player: {fileID: 1974501391083726439, guid: 16abbe5179b6b4948bec9b102311e152, type: 3}
   _state: 0
   _outOfSightChaseTime: 2
   _timeBetweenAttacks: 3
+  _damage: 5
+  EnemyShoot: {fileID: 0}
 --- !u!114 &4201120253373746754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +93,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   EnemyPain: {fileID: 1685476841085794496}
-  EnemyShoot: {fileID: 5914940427530738873}
 --- !u!195 &3806473535926439809
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -346,12 +347,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8c66944f4870a94db238863b6fd7423, type: 3}
---- !u!82 &5914940427530738873 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5467458351764924999, guid: a8c66944f4870a94db238863b6fd7423,
-    type: 3}
-  m_PrefabInstance: {fileID: 1870760339027654398}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6372153697670270572 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4726587849220421778, guid: a8c66944f4870a94db238863b6fd7423,

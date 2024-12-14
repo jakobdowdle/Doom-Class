@@ -50,7 +50,8 @@ public class WeaponBehaviour : MonoBehaviour
             case 0:
                 return PistolDamage;
             case 1:
-                return Random.Range(ShotgunDamageMin, ShotgunDamageMax);
+                //I still can't believe this is how OG DOOM does it
+                return Random.Range(ShotgunDamageMin, ShotgunDamageMax) * 3;
         }
         return 0;
     }

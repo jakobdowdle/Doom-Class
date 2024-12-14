@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DoorBehaviour : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float time;
-    [SerializeField] private float moveDist;
+    [SerializeField] private float moveSpeed = 1;
+    [SerializeField] private float time = 1;
+    [SerializeField] private float moveDist = 2;
 
     [SerializeField] private AudioSource OpenDoorSound;
 

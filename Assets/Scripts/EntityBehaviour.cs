@@ -32,7 +32,7 @@ public class EntityBehaviour : MonoBehaviour {
 
         if (health < 1) {
             health = 0;
-            //Die();
+            Die();
         }
     }
 
